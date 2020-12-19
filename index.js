@@ -36,7 +36,7 @@ module.exports.createRepo = (name, path) => {
         // console.log('headers:', res.headers);
 
         res.on('data', (d) => {
-            console.log(JSON.parse(d.toString()));
+            // console.log(d.toString());
         });
     })
     req.write(JSON.stringify(formData))
@@ -62,3 +62,4 @@ module.exports.deleteRepo = (repo) => {
     })
     req.end()
 }
+module.exports.buildPages = require('./pages/build.js')

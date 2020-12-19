@@ -59,11 +59,15 @@ set.option('-u --username <username>', 'set username')
         }
     })
 const repo = program.command('repo')
-repo.command('create <name> ')
+repo.command('create <name>')
     .description('创建仓库')
     .action(api.createRepo)
 repo.command('delete <repo>')
     .description('删除仓库')
     .action(api.deleteRepo)
+const pages = program.command('pages')
+pages.command('build <repo>')
+    .description('启动/更新 pages')
+    .action(api.buildPages)
 program.parse(process.argv);
 console.log(000000);
