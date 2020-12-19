@@ -62,5 +62,8 @@ const repo = program.command('repo')
 repo.command('create <name> ')
     .description('创建仓库')
     .action(api.createRepo)
+repo.command('delete <repo>')
+    .description('删除仓库')
+    .action(api.deleteRepo)
 program.parse(process.argv);
 console.log(000000);

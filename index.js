@@ -42,3 +42,23 @@ module.exports.createRepo = (name, path) => {
     req.write(JSON.stringify(formData))
     req.end()
 }
+module.exports.deleteRepo = (repo) => {
+    const formData = {
+        "access_token": config.token,
+    }
+    const req = https.request({
+        hostname: 'gitee.com',
+        port: 443,
+        path: `/api/v5/repos/${config.username}/${repo}?${querystring.stringify(formData)}`,
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+    }, res => {
+        console.log('statusCode:', res.statusCode);
+        res.on('data', (d) => {
+            console.log(JSON.parse(d.toString()));
+        });
+    })
+    req.end()
+}
