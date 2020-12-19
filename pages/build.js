@@ -1,7 +1,6 @@
 const https = require('https')
 const querystring = require('querystring')
 const zlib = require('zlib')
-// const { buildPages } = require('../index.js')
 const config = require('../config/config-file.js').getConfig()
 let cookie = config.cookie
 const postData = querystring.stringify({
@@ -18,11 +17,9 @@ const createOption = () => {
         path = path.substring(0, path.lastIndexOf('/'))
     }
     return {
-        //https://gitee.com/xna00/btfly-doc/pages/rebuild
         hostname: "gitee.com",
         port: 443,
         method: 'POST',
-        //第一次开启，path: `/xna00/${repo}/pages
         path,
         headers: {
             'Accept': '*/*',
@@ -44,27 +41,14 @@ const createOption = () => {
         }
     }
 }
-console.log(postData.length);
 module.exports = buildPages = (targetRepo) => {
     repo = targetRepo
     const option = createOption()
-
-    // console.log(option)
     const req = https.request(option, res => {
         console.log('statusCode:', res.statusCode);
-        // console.log('headers:', res.headers);
-        // if(res.statusCode === 404){
-        //     option.path = option.path.substring(0, option.path.lastIndexOf('/'))
-        //     buildPages(repo)
-        // }
         let chunks = []
         let data
         res.on('data', (chunk) => {
-            // const data =zlib.gunzipSync(d).toString() 
-            // if(data.includes('频繁')) {
-            //    
-            // }
-            // console.log(data);
             chunk = zlib.gunzipSync(chunk)
             chunks.push(chunk)
         });
@@ -82,9 +66,7 @@ module.exports = buildPages = (targetRepo) => {
             } else {
                 console.log('未知错误')
             }
-
         })
-
     })
     req.write(postData)
     req.end()
