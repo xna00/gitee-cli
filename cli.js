@@ -60,5 +60,7 @@ set.option('-u --username <username>', 'set username')
     })
 const repo = program.command('repo')
 repo.command('create <name> ')
+    .description('创建仓库')
+    .action(api.createRepo)
 program.parse(process.argv);
 console.log(000000);

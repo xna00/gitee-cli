@@ -1,6 +1,7 @@
 const configFile = require('./config/config-file')
 const config = configFile.getConfig()
 const https = require('https')
+const querystring = require('querystring')
 
 module.exports.setConfig = (
     username = config.username,
@@ -22,8 +23,22 @@ module.exports.createRepo = (name, path) => {
         "has_wiki": "true",
         "can_comment": "true"
     }
-    https.request({
-        hostname:'gitee.com',
-        
+    const req = https.request({
+        hostname: 'gitee.com',
+        port: 443,
+        path: '/api/v5/user/repos',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+    }, res => {
+        console.log('statusCode:', res.statusCode);
+        // console.log('headers:', res.headers);
+
+        res.on('data', (d) => {
+            console.log(JSON.parse(d.toString()));
+        });
     })
+    req.write(JSON.stringify(formData))
+    req.end()
 }
