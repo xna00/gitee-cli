@@ -1,0 +1,19 @@
+{
+  "name": "gitee-cli",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "gitee": "cli.js",
+    "ge":"cli.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.14.14",
+    "commander": "^6.2.1"
+  }
+}
