@@ -2,7 +2,7 @@ const https = require('https')
 const querystring = require('querystring')
 const zlib = require('zlib')
 const config = require('../config/config.js').getConfig()
-let cookie = config.cookie
+// let cookie = config.cookie
 const postData = querystring.stringify({
     branch: 'master',
     build_directory: '',
@@ -28,7 +28,7 @@ const createOption = () => {
             'Connection': 'keep-alive',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Content-Length': postData.length,
-            'Cookie': cookie,
+            'Cookie': config.cookie,
             'Host': 'gitee.com',
             'Origin': 'https://gitee.com',
             'Referer': `https://gitee.com/${config.username}/${repo}/pages`,

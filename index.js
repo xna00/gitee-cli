@@ -3,17 +3,11 @@ const config = configFile.getConfig()
 const https = require('https')
 const querystring = require('querystring')
 
-module.exports.setConfig = (
-    username = config.username,
-    token = config.token,
-    cookie = config.cookie) => {
-    configFile.setConfig({
-        ...config,
-        username,
-        token,
-        cookie
-    })
-    console.log(username);
+module.exports.setConfig = (username, token, cookie) => {
+    username && (config.username = username)
+    token && (config.token = token)
+    cookie && (config.cookie = cookie)
+    configFile.setConfig(config)
 }
 module.exports.createRepo = (name, path) => {
     const formData = {
