@@ -19,6 +19,9 @@ module.exports.setConfig = (username, token, cookie) => {
         ...tmpConfig
     })
 }
+module.exports.getConfig = ()=>{
+    console.log(config);
+}
 module.exports.createRepo = (name, path) => {
     const formData = {
         "access_token": config.token,

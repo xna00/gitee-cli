@@ -7,7 +7,8 @@ const pkg = require('./package.json')
 
 program.version(pkg.version)
 
-const set = program.command('set');
+const config = program.command('config');
+const set = config.command('set')
 set.option('-u --username <username>', 'set username')
     .option('-t --token <token>', 'set token')
     .option('-c --cookie <cookie>', 'set cookie')
@@ -19,6 +20,9 @@ set.option('-u --username <username>', 'set username')
             set.help()
         }
     })
+config.command('get')
+    .action(api.getConfig)
+
 const repo = program.command('repo')
 repo.command('create <name>')
     .description('创建仓库')
