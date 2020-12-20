@@ -1,4 +1,4 @@
-const configFile = require('./config/config-file')
+const configFile = require('./config/config')
 const config = configFile.getConfig()
 const https = require('https')
 const querystring = require('querystring')

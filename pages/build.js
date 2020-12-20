@@ -1,7 +1,7 @@
 const https = require('https')
 const querystring = require('querystring')
 const zlib = require('zlib')
-const config = require('../config/config-file.js').getConfig()
+const config = require('../config/config.js').getConfig()
 let cookie = config.cookie
 const postData = querystring.stringify({
     branch: 'master',
