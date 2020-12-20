@@ -7,7 +7,12 @@ module.exports.setConfig = (username, token, cookie) => {
     username && (config.username = username)
     token && (config.token = token)
     cookie && (config.cookie = cookie)
-    configFile.setConfig(config)
+    configFile.setConfig({
+        ...config,
+        username,
+        token,
+        cookie
+    })
 }
 module.exports.createRepo = (name, path) => {
     const formData = {

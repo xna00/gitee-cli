@@ -9,15 +9,15 @@ try {
     config = {}
 }
 configProxy = new Proxy(config, {
-   get(target, key, receiver){
-       const ret = Reflect.get(target, key, receiver)
-       if(ret === undefined){
-           console.log(`未设置${key}，退出`);
-           process.exit(2)
-       }else{
-           return ret
-       }
-   } 
+    get(target, key, receiver) {
+        const ret = Reflect.get(target, key, receiver)
+        if (ret === undefined) {
+            console.log(`未设置${key}，退出`);
+            process.exit(2)
+        } else {
+            return ret
+        }
+    }
 })
 module.exports.getConfig = () => {
     return configProxy
