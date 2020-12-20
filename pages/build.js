@@ -35,8 +35,8 @@ const createOption = () => {
             'Sec-Fetch-Dest': 'empty',
             'Sec-Fetch-Mode': 'cors',
             'Sec-Fetch-Site': 'same-origin',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.60',
-            'X-CSRF-Token': 'kkSCx2pjSRwcuFF8u73m+GsSUmJ6F3Zf6ZZJbJ19f5c=',
+            'User-Agent': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.60',
+            'X-CSRF-Token': config.XCSRFToken,
             'X-Requested-With': 'XMLHttpRequest'
         }
     }

@@ -10,10 +10,11 @@ const set = config.command('set')
 set.option('-u --username <username>', 'set username')
     .option('-t --token <token>', 'set token')
     .option('-c --cookie <cookie>', 'set cookie')
+    .option('-x --X-CSRF-Token <XCSRFToken>')
     .description('set username, token, cookie')
-    .action(({ username, token, cookie }) => {
-        if (username || token || cookie) {
-            api.setConfig(username, token, cookie)
+    .action(({ username, token, cookie, XCSRFToken }) => {
+        if (username || token || cookie || XCSRFToken) {
+            api.setConfig({ username, token, cookie, XCSRFToken })
         } else {
             set.help()
         }

@@ -3,14 +3,9 @@ const config = configFile.getConfig()
 const https = require('https')
 const querystring = require('querystring')
 
-module.exports.setConfig = (username, token, cookie) => {
-    const tmpConfig = {
-        username,
-        token,
-        cookie
-    }
-    Object.keys(config).forEach((key)=>{
-        if(tmpConfig[key]===undefined){
+module.exports.setConfig = (tmpConfig) => {
+    Object.keys(config).forEach((key) => {
+        if (tmpConfig[key] === undefined) {
             delete tmpConfig[key]
         }
     })
@@ -19,7 +14,7 @@ module.exports.setConfig = (username, token, cookie) => {
         ...tmpConfig
     })
 }
-module.exports.getConfig = ()=>{
+module.exports.getConfig = () => {
     console.log(config);
 }
 module.exports.createRepo = (name, path) => {
