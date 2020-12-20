@@ -4,14 +4,19 @@ const https = require('https')
 const querystring = require('querystring')
 
 module.exports.setConfig = (username, token, cookie) => {
-    username && (config.username = username)
-    token && (config.token = token)
-    cookie && (config.cookie = cookie)
-    configFile.setConfig({
-        ...config,
+    const tmpConfig = {
         username,
         token,
         cookie
+    }
+    Object.keys(config).forEach((key)=>{
+        if(tmpConfig[key]===undefined){
+            delete tmpConfig[key]
+        }
+    })
+    configFile.setConfig({
+        ...config,
+        ...tmpConfig
     })
 }
 module.exports.createRepo = (name, path) => {
@@ -35,7 +40,7 @@ module.exports.createRepo = (name, path) => {
         // console.log('headers:', res.headers);
 
         res.on('data', (d) => {
-            // console.log(d.toString());
+            console.log(d.toString());
         });
     })
     req.write(JSON.stringify(formData))
