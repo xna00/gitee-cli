@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { program, arguments } = require('commander')
 const commander = require('commander')
 const api = require('./index.js')
