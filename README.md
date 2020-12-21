@@ -18,6 +18,8 @@ gitee-cli，一个简单的gitee命令行工具，利用[Gitee API](https://gite
 #### Pages
 使用Gitee API建立Pages会失败，提示： 非付费pages，不允许部署 pages。所以要用gitee-cli更新Pages，需要模拟浏览器请求。
 ##### 设置cookie和X-CSRF-Token：
+在浏览器中更新 Pages，从请求头中获取cookie和X-CSRF-Token。
+
 `ge set -c <cookie> -x <XCSRFToken>`
 ##### 启动/更新 Pages
 `ge pages build <repo>`
