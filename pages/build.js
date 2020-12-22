@@ -1,8 +1,8 @@
 const https = require('https')
 const querystring = require('querystring')
 const zlib = require('zlib')
+const getStatus = require('./getStatus.js')
 const config = require('../config/config.js').getConfig()
-// let cookie = config.cookie
 const postData = {
     branch: 'master',
     build_directory: '',
@@ -63,7 +63,9 @@ module.exports = buildPages = (targetRepo, buildDirectory) => {
             } else if (data.includes('频繁')) {
                 console.log('请勿频繁更新部署，稍等1分钟再试试看');
             } else if (res.statusCode === 200 && data.includes('服务仅供博客')) {
-                console.log('成功');
+                setTimeout(() => {
+                    getStatus(repo).then((code) => console.log(code), (error) => console.log(error))
+                }, 5000)
             } else {
                 console.log('未知错误')
             }
