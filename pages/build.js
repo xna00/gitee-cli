@@ -3,12 +3,12 @@ const querystring = require('querystring')
 const zlib = require('zlib')
 const config = require('../config/config.js').getConfig()
 // let cookie = config.cookie
-const postData = querystring.stringify({
+const postData = {
     branch: 'master',
     build_directory: '',
     force_https: true,
     auto_update: false
-})
+}
 let repo = ''
 let firstTime = false
 const createOption = () => {
@@ -27,7 +27,7 @@ const createOption = () => {
             'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
             'Connection': 'keep-alive',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Content-Length': postData.length,
+            'Content-Length': querystring.stringify(postData).length,
             'Cookie': config.cookie,
             'Host': 'gitee.com',
             'Origin': 'https://gitee.com',
@@ -41,8 +41,9 @@ const createOption = () => {
         }
     }
 }
-module.exports = buildPages = (targetRepo) => {
+module.exports = buildPages = (targetRepo, buildDirectory) => {
     repo = targetRepo
+    postData.build_directory = buildDirectory
     const option = createOption()
     const req = https.request(option, res => {
         console.log('statusCode:', res.statusCode);
@@ -68,6 +69,6 @@ module.exports = buildPages = (targetRepo) => {
             }
         })
     })
-    req.write(postData)
+    req.write(querystring.stringify(postData))
     req.end()
 }
