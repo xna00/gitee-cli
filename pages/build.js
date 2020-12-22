@@ -41,9 +41,10 @@ const createOption = () => {
         }
     }
 }
-module.exports = buildPages = (targetRepo, buildDirectory) => {
+module.exports = buildPages = (targetRepo, buildDirectory, branch) => {
     repo = targetRepo
     postData.build_directory = buildDirectory
+    postData.branch = branch
     const option = createOption()
     const req = https.request(option, res => {
         console.log('statusCode:', res.statusCode);

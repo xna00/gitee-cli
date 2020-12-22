@@ -35,8 +35,9 @@ repo.command('list')
 const pages = program.command('pages')
 pages.command('build <repo>')
     .description('启动/更新 pages')
-    .option('-d --build-directory <buildDirectory>','部署目录','')
-    .action((repo, {buildDirectory}) => {
-        api.buildPages(repo, buildDirectory)
+    .option('-d --build-directory <buildDirectory>', '部署目录', '')
+    .option('-b --branch <branch>', '部署分支', 'master')
+    .action((repo, { buildDirectory, branch }) => {
+        api.buildPages(repo, buildDirectory, branch)
     })
 program.parse(process.argv);
