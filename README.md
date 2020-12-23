@@ -23,3 +23,5 @@ gitee-cli，一个简单的gitee命令行工具，利用[Gitee API](https://gite
 `ge set -c <cookie> -x <XCSRFToken>`
 ##### 启动/更新 Pages
 `ge pages build <repo>`
+
+`-d`选项选择目录, 默认为根目录。`-b`选项选择分支，默认为master分支。
