@@ -7,7 +7,7 @@ gitee-cli，一个简单的gitee命令行工具，利用[Gitee API](https://gite
 #### 配置
 使用前需设置access_token和username
 
-`ge set -u <username> -t <token>`
+`ge config set -u <username> -t <token>`
 #### 仓库
 ##### 列出所有仓库
 `ge repo list`
