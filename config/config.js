@@ -1,5 +1,6 @@
 const fs = require('fs')
-const homePath = process.env.HOME || fs.homedir()
+const os = require('os')
+const homePath = process.env.HOME || os.homedir()
 const configPath = require('path').join(homePath, '.gitee')
 
 let config = fs.readFileSync(configPath, { flag: 'a+' }).toString()

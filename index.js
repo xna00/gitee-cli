@@ -65,8 +65,9 @@ module.exports.deleteRepo = (repo) => {
     req.end()
 }
 module.exports.listRepo = ()=>{
+	let atoken = config.token
     const formData = {
-        access_token: '5579d082f80f96be814a986f85f1e044',
+        access_token: atoken,
         sort: 'updated',
         page: 1,
         per_page: 100
